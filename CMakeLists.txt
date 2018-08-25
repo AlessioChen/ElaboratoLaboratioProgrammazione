@@ -13,7 +13,8 @@ set(SOURCES
         )
 
 set(HEADERS
-        mainwindow.h)
+        mainwindow.h
+        )
 
 set(PROJECT_UI
         mainwindow.ui)
