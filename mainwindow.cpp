@@ -21,6 +21,11 @@ MainWindow::~MainWindow(){
 void MainWindow::showCurrentTime(){
     QTime time = QTime::currentTime();
     QString time_text = time.toString("hh : mm : ss");
+    if (( time.second() % 2 ) == 0 ) {
+        time_text[3] = ' ';
+        time_text[8] = ' ';
+
+    }
     ui->data_label->setText(time_text);
 
 }
