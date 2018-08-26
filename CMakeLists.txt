@@ -10,11 +10,13 @@ set(CMAKE_CURRENT_DIR ON)
 set(SOURCES
         main.cpp
         mainwindow.cpp
+        Time.cpp
         )
 
 set(HEADERS
         mainwindow.h
-        )
+        Observer.h
+        Time.h)
 
 set(PROJECT_UI
         mainwindow.ui)

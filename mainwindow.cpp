@@ -9,8 +9,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //mostra l'orario corrente
     timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), this, SLOT(showCurrentTime()));
     timer->start(1000);
+
+    QTimer::connect(timer, SIGNAL(timeout()), this, SLOT(showCurrentTime())); //mostra l'orario corrente
 
 }
 
