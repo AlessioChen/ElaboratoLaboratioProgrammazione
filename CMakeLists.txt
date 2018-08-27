@@ -20,7 +20,6 @@ set(HEADERS
         Observer.h
         Time.h
         Date.h
-        Subject.h
         Counter.h)
 
 set(PROJECT_UI

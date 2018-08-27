@@ -6,21 +6,21 @@
 #define TIMERAPPLICATION_COUNTER_H
 
 #include "QObject"
-#include "Subject.h"
 #include <list>
 #include "Time.h"
 #include "Date.h"
 #include "QTimer"
+#include "Observer.h"
 
-class Counter: public Subject, public QObject{
+class Counter: public QObject{
 
 Q_OBJECT
 public:
     Counter();
 
-    void subscribe(Observer *o) override;
-    void unsubscribe(Observer *o) override;
-    void notify() override;
+    void subscribe(Observer *o);
+    void unsubscribe(Observer *o);
+    void notify();
     Time &getTime();
     Date &getDate();
     Counter &getCounter();

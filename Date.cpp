@@ -153,5 +153,21 @@ Date &Date::getDate(){
     return *this;
 }
 
+void Date::setDay(int d){
+    day = d;
+
+}
+
+void Date::setLeapYear(bool l){
+    leapYear = l;
+
+}
+
+void Date::setFormat(QString f){
+    dateFormat = f;
+
+}
+
+
 
 
