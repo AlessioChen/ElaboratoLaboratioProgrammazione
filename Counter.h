@@ -31,7 +31,13 @@ public:
     ~Counter(){
         for ( auto &i: observers )
             unsubscribe(i);
+        delete date;
+        delete time;
+
     }
+
+    std::string &getStringTime();
+    std::string &getStringDate();
 
 public slots:
     void increase();
