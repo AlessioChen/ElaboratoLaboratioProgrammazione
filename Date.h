@@ -18,14 +18,14 @@ public:
     void setFormat(QString f);
 
     Date &getDate();
-    int gerDay();
+    int getDay();
     int getMonth();
     int getYear();
     std::string &getMonthOf();
     std::string &getdayof();
     bool getLeapYear();
 
-    bool &getDateFormat();
+    QString &getDateFormat();
     bool checkLeapYear(int y);
     void checkMonthOf();
     void checkDayOf();

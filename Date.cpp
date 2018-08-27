@@ -92,8 +92,65 @@ void Date::setDate(int d, int m, int y){
         year = QDate::currentDate().year();
 
     leapYear = checkLeapYear(year);
-    //TODO
 
+    if ( m < 0 || m > 12 )
+        month = QDate::currentDate().month();
+    else
+        month = m;
+
+    if ( d < 0 || d > 31 )
+        day = QDate::currentDate().day();
+    else
+        day = d;
+
+    if (( month == 4 || month == 6 || month == 9 || month == 11 ) && d == 31 )
+        day = QDate::currentDate().day();
+    if ( month == 2 && leapYear == false && d >= 29 )
+        day = QDate::currentDate().day();
+
+    checkMonthOf();
+    checkDayOf();
+
+}
+
+bool Date::checkLeapYear(int y){
+    if (( y % 4 == 0 && y % 100 && y % 400 ) || ( y % 4 == 0 && y % 100 != 0 ))
+        return true;
+    else
+        return false;
+
+}
+
+QString &Date::getDateFormat(){
+    return dateFormat;
+}
+
+bool Date::getLeapYear(){
+    return leapYear;
+}
+
+std::string &Date::getdayof(){
+    return strDayOf;
+}
+
+std::string &Date::getMonthOf(){
+    return monthOf;
+}
+
+int Date::getYear(){
+    return year;
+}
+
+int Date::getMonth(){
+    return month;
+}
+
+int Date::getDay(){
+    return day;
+}
+
+Date &Date::getDate(){
+    return *this;
 }
 
 

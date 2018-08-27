@@ -17,7 +17,8 @@ set(SOURCES
 set(HEADERS
         mainwindow.h
         Observer.h
-        Time.h Date.h)
+        Time.h
+        Date.h)
 
 set(PROJECT_UI
         mainwindow.ui)
