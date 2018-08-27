@@ -12,13 +12,16 @@ set(SOURCES
         mainwindow.cpp
         Time.cpp
         Date.cpp
+        Counter.cpp
         )
 
 set(HEADERS
         mainwindow.h
         Observer.h
         Time.h
-        Date.h)
+        Date.h
+        Subject.h
+        Counter.h)
 
 set(PROJECT_UI
         mainwindow.ui)
