@@ -6,9 +6,10 @@
 #include "QTime"
 
 Time::Time(){
-    hour = QTime::currentTime().hour();
-    minute = QTime::currentTime().minute();
-    second = QTime::currentTime().second();
+    QTime c = QTime::currentTime();
+    hour = c.hour();
+    minute = c.minute();
+    second = c.second();
 }
 
 void Time::setTime(int s, int m, int h){

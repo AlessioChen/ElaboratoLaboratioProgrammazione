@@ -31,8 +31,6 @@ public:
     ~Counter(){
         for ( auto &i: observers )
             unsubscribe(i);
-        delete date;
-        delete time;
 
     }
 
@@ -43,8 +41,8 @@ public slots:
     void increase();
 
 private:
-    Date *date;
-    Time *time;
+    Date date;
+    Time time;
     std::list <Observer *> observers;
     std::string strTime;
     std::string strDate;

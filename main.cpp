@@ -5,6 +5,8 @@
 #include <QtWidgets/QTimeEdit>
 #include "mainwindow.h"
 #include "Counter.h"
+#include "MyClock.h"
+#include "TimerDisplay.h"
 
 int main(int argc, char *argv[]){
 
@@ -12,7 +14,6 @@ int main(int argc, char *argv[]){
 
     MainWindow *window = new MainWindow;
     window->setGeometry(500, 200, 650, 450);
-
     Counter contatore;
 
 
@@ -28,6 +29,12 @@ int main(int argc, char *argv[]){
     font = stop.font();
     font.setPointSize(15);
 
+    //bottone di reset
+    QPushButton reset("reset", window);
+    reset.setGeometry(140, 200, 180, 50);
+    font = reset.font();
+    font.setPointSize(15);
+
 
     //editor per il tempo
     QTimeEdit editor(window);
@@ -36,6 +43,23 @@ int main(int argc, char *argv[]){
     font = editor.font();
     font.setPointSize(15);
 
+    //display del tempo
+    MyClock current_time(&contatore, window);
+    TimerDisplay timer(&editor, &contatore, window);
+    timer.setGeometry(20, 260, 420, 140);
+
+    //scritta fine timer
+    QLabel timeout("TIME OUT!!", window);
+    timeout.setGeometry(145, 210, 160, 50);
+    timeout.setAlignment(Qt::AlignCenter);
+    // timeout.setVisible(false);
+
+
+    //connessioni
+    TimerDisplay::connect(&timer, SIGNAL(callTimeOut()), &timeout, SLOT(show()));
+    TimerDisplay::connect(&timer, SIGNAL(hideTimeOut()), &timeout, SLOT(hide()));
+
+    // app.setActiveWindow(window);
     window->show();
 
     return app.exec();

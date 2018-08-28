@@ -10,6 +10,8 @@ public:
     virtual void update() = 0;
     virtual void attach() = 0;
     virtual void detach() = 0;
+
+    virtual ~Observer(){ };
 };
 
 #endif //TIMERAPPLICATION_OBSERVER_H
