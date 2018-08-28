@@ -1,15 +1,10 @@
 cmake_minimum_required(VERSION 3.10)
 project(timerApplication)
 
-
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_CURRENT_DIR ON)
-
-set(QT5 NEED)
-find_package(Qt5Core REQUIRED)
-find_package(Qt5Gui REQUIRED)
-find_package(Qt5Widgets REQUIRED)
+set(CMAKE_AUTOMOC ON)                   #crea i file _moc ogni volta che incontra la macro Q_OBJECT
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+set(CMAKE_AUTOUIC ON)                   #aggiunge il file ui per la creazione della finestra interattiva
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 
 set(SOURCES
@@ -20,26 +15,24 @@ set(SOURCES
         Counter.cpp
         MyClock.cpp
         TimerDisplay.cpp
-        )
-
-set(HEADERS
         mainwindow.h
         Observer.h
         Time.h
         Date.h
         Counter.h
         MyClock.h
-        TimerDisplay.h)
+        TimerDisplay.h
+        mainwindow.ui
+        )
 
-set(PROJECT_UI
-        mainwindow.ui)
+add_executable(${PROJECT_NAME} ${SOURCES})
 
 
-qt5_wrap_ui(project_headers_wrapped ${PROJECT_UI})
-qt5_wrap_cpp(project_sources_moc ${HEADERS})
+set(QT5 NEED)
+find_package(Qt5Core REQUIRED)
+find_package(Qt5Gui REQUIRED)
+find_package(Qt5Widgets REQUIRED)
 
-add_executable(${PROJECT_NAME} ${HEADERS} ${SOURCES}
-        ${project_sources_moc} ${project_headers_wrapped})
 
 target_link_libraries(${PROJECT_NAME} Qt5::Core)
 target_link_libraries(${PROJECT_NAME} Qt5::Gui)

@@ -52,14 +52,18 @@ int main(int argc, char *argv[]){
     QLabel timeout("TIME OUT!!", window);
     timeout.setGeometry(145, 210, 160, 50);
     timeout.setAlignment(Qt::AlignCenter);
-    // timeout.setVisible(false);
+    timeout.setVisible(false);
 
 
     //connessioni
     TimerDisplay::connect(&timer, SIGNAL(callTimeOut()), &timeout, SLOT(show()));
     TimerDisplay::connect(&timer, SIGNAL(hideTimeOut()), &timeout, SLOT(hide()));
 
-    // app.setActiveWindow(window);
+    QPushButton::connect(&start, SIGNAL(clicked()), &timer, SLOT(fromStart()));
+    QPushButton::connect(&stop, SIGNAL(clicked()), &timer, SLOT(fromStop()));
+    QPushButton::connect(&reset, SIGNAL(clicked()), &timer, SLOT(fromReset()));
+
+    app.setActiveWindow(window);
     window->show();
 
     return app.exec();
