@@ -154,7 +154,19 @@ Date &Date::getDate(){
 }
 
 void Date::setDay(int d){
-    day = d;
+    if (( d <= 30 && month != 2 ) || d <= 28 || ( d == 29 && leapYear == true ) ||
+        ( d == 31 && ( month != 4 && month != 6 && month != 9 && month != 11 && month != 2 )))
+        day = d;
+    else {
+        day = 1;
+        month = month + 1;
+    }
+    if ( month > 12 ) {
+        month = 1;
+        year = year + 1;
+        checkDayOf();
+        checkMonthOf();
+    }
 
 }
 
