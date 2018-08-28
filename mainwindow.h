@@ -16,11 +16,8 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow() override;
 
-public slots:
-    void showCurrentTime();
 private:
     Ui::MainWindow *ui;
-    QTimer *timer;
 
 };
 

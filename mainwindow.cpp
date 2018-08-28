@@ -7,11 +7,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->setupUi(this);
 
-    //mostra l'orario corrente
-    timer = new QTimer(this);
-    timer->start(1000);
-
-    QTimer::connect(timer, SIGNAL(timeout()), this, SLOT(showCurrentTime())); //mostra l'orario corrente
 
 }
 
@@ -19,14 +14,4 @@ MainWindow::~MainWindow(){
     delete ui;
 }
 
-void MainWindow::showCurrentTime(){
-    QTime time = QTime::currentTime();
-    QString time_text = time.toString("hh : mm : ss");
-    if (( time.second() % 2 ) == 0 ) {
-        time_text[3] = ' ';
-        time_text[8] = ' ';
 
-    }
-    ui->data_label->setText(time_text);
-
-}

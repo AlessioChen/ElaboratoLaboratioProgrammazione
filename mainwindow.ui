@@ -14,32 +14,6 @@
             <string>MainWindow</string>
         </property>
         <widget class="QWidget" name="centralwidget">
-            <widget class="QPushButton" name="start_button">
-                <property name="geometry">
-                    <rect>
-                        <x>30</x>
-                        <y>140</y>
-                        <width>180</width>
-                        <height>70</height>
-                    </rect>
-                </property>
-                <property name="text">
-                    <string>START</string>
-                </property>
-            </widget>
-            <widget class="QPushButton" name="stop_button">
-                <property name="geometry">
-                    <rect>
-                        <x>430</x>
-                        <y>140</y>
-                        <width>180</width>
-                        <height>70</height>
-                    </rect>
-                </property>
-                <property name="text">
-                    <string>STOP</string>
-                </property>
-            </widget>
             <widget class="QLabel" name="data_label">
                 <property name="geometry">
                     <rect>
@@ -62,29 +36,6 @@
                 </property>
                 <property name="alignment">
                     <set>Qt::AlignCenter</set>
-                </property>
-            </widget>
-            <widget class="QTimeEdit" name="timeEdit">
-                <property name="geometry">
-                    <rect>
-                        <x>220</x>
-                        <y>140</y>
-                        <width>200</width>
-                        <height>70</height>
-                    </rect>
-                </property>
-            </widget>
-            <widget class="QPushButton" name="stop_button_2">
-                <property name="geometry">
-                    <rect>
-                        <x>220</x>
-                        <y>220</y>
-                        <width>200</width>
-                        <height>70</height>
-                    </rect>
-                </property>
-                <property name="text">
-                    <string>RESET</string>
                 </property>
             </widget>
         </widget>
