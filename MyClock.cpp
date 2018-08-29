@@ -26,13 +26,13 @@ MyClock::MyClock(Counter *counter, QWidget *parent){
 
     selectDateFormat.addItem("day-month-year");
     selectDateFormat.addItem("dd-mm-yyyy");
-    selectDateFormat.addItem("yyyy-mm-dd");
+    selectDateFormat.addItem("mm-dd-yyyy");
 
     selectTimeFormat.setParent(parent);
     selectTimeFormat.setGeometry(20, 40, 160, 30);
 
     selectTimeFormat.addItem("hh:mm:ss");
-    selectTimeFormat.addItem("hh::mm");
+    selectTimeFormat.addItem("hh:mm");
 
     myCounter = counter;
     attach();
@@ -49,13 +49,13 @@ void MyClock::update(){
     std::string form;
     switch ( selectTimeFormat.currentIndex()) {
         case 0:
-            form = "hh::mm::ss";
+            form = "hh:mm:ss";
             break;
         case 1:
-            form = "hh::mm";
+            form = "hh:mm";
             break;
         default:
-            form = "hh::mm::ss";
+            form = "hh:mm:ss";
     }
     myCounter->setTimeFormat(form);
 
