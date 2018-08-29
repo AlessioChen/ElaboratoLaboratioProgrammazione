@@ -7,10 +7,14 @@
 #include "Counter.h"
 #include "MyClock.h"
 #include "TimerDisplay.h"
+#include "iostream"
 
 int main(int argc, char *argv[]){
 
     QApplication app(argc, argv);
+
+
+
 
     MainWindow *window = new MainWindow;
     window->setGeometry(500, 200, 650, 450);
@@ -56,12 +60,12 @@ int main(int argc, char *argv[]){
 
 
     //connessioni
-    TimerDisplay::connect(&timer, SIGNAL(callTimeOut()), &timeout, SLOT(show()));
+  /*  TimerDisplay::connect(&timer, SIGNAL(callTimeOut()), &timeout, SLOT(show()));
     TimerDisplay::connect(&timer, SIGNAL(hideTimeOut()), &timeout, SLOT(hide()));
 
     QPushButton::connect(&start, SIGNAL(clicked()), &timer, SLOT(fromStart()));
     QPushButton::connect(&stop, SIGNAL(clicked()), &timer, SLOT(fromStop()));
-    QPushButton::connect(&reset, SIGNAL(clicked()), &timer, SLOT(fromReset()));
+    QPushButton::connect(&reset, SIGNAL(clicked()), &timer, SLOT(fromReset()));*/
 
     app.setActiveWindow(window);
     window->show();

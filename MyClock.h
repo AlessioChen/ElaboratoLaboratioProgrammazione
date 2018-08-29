@@ -11,6 +11,7 @@
 #include "QTime"
 #include"QComboBox"
 #include "Counter.h"
+#include "QTimeEdit"
 
 class MyClock: public QObject, public Observer{
 Q_OBJECT

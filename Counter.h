@@ -25,8 +25,8 @@ public:
     Date &getDate();
     Counter &getCounter();
 
-    void setDateFormat(QString &format);
-    void setTimeFormat(QString &format);
+    void setDateFormat(std::string &format);
+    void setTimeFormat(std::string &format);
 
     ~Counter(){
         for ( auto &i: observers )

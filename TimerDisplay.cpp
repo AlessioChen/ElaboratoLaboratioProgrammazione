@@ -56,7 +56,7 @@ Time &TimerDisplay::getTime(){
 
 void TimerDisplay::updateEditor(){
     QTime time = editor->time();
-    QString form = "hh:mm:ss";
+    std::string form = "hh:mm:ss";
 
     thisTime.setHours(time.hour());
     thisTime.setMinute(time.minute());

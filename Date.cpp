@@ -12,6 +12,7 @@ Date::Date(){
     year = c.year();
     dayOf = c.dayOfWeek();
     leapYear = c.isLeapYear(year);
+    dateFormat= "day-month-year";
     checkDayOf();
     checkMonthOf();
 
@@ -121,7 +122,7 @@ bool Date::checkLeapYear(int y){
 
 }
 
-QString &Date::getDateFormat(){
+std::string &Date::getDateFormat(){
     return dateFormat;
 }
 
@@ -175,11 +176,32 @@ void Date::setLeapYear(bool l){
 
 }
 
-void Date::setFormat(QString f){
+void Date::setFormat(std::string f){
     dateFormat = f;
 
 }
 
+std::string &Date::getDateString(){
 
+    std::string d = std::to_string(day);
+    std::string m = std::to_string(month);
+    std::string y = std::to_string(year);
+
+
+    if ( day < 10 )
+         d = '0' + day;
+    if ( month < 10 )
+        m = '0' +month;
+
+    if ( dateFormat == "day-month-year" )
+        strDate = getdayof() + " " + getMonthOf() + " " +  y;
+    if ( dateFormat == "dd-mm-yyyy" )
+        strDate = d + "-" + m + "-" + y;
+    if ( dateFormat == "mm-dd-yyyy" )
+        strDate = m + "-" + d + "-" + y;
+
+
+    return strDate;
+}
 
 

@@ -4,12 +4,15 @@
 
 #include "Time.h"
 #include "QTime"
+#include "iostream"
 
 Time::Time(){
     QTime c = QTime::currentTime();
     hour = c.hour();
     minute = c.minute();
     second = c.second();
+    timeFormat = "hh:mm:ss";
+    timeString = getTimeString();
 }
 
 void Time::setTime(int s, int m, int h){
@@ -52,10 +55,6 @@ void Time::setHours(int h){
 
 }
 
-void Time::setTimeFormat(const QString &timeFormat){
-    Time::timeFormat = timeFormat;
-}
-
 int Time::getSecond() const{
     return second;
 }
@@ -68,27 +67,29 @@ int Time::getHours() const{
     return hour;
 }
 
-QString &Time::getTimeFormat(){
-    return timeFormat;
+void Time::setTimeFormat(const std::string &t){
+    timeFormat = t;
 }
 
 std::string &Time::getTimeString(){
+
     std::string sec = std::to_string(second);
-    if ( second < 10 )
-        sec = '0' + std::to_string(second);
-
     std::string min = std::to_string(minute);
-    if ( minute < 10 )
-        min = '0' + std::to_string(minute);
-
     std::string h = std::to_string(hour);
-    if ( hour < 10 )
-        h = '0' + std::to_string(hour);
 
-    if ( timeFormat == "hh::mm::ss" )
+    if ( second < 10 )
+        sec = '0' + second;
+
+    if ( minute < 10 )
+        min = '0' + minute;
+
+    if ( hour < 10 )
+        h = '0' + hour;
+
+    if ( timeFormat == "hh:mm:ss" )
         timeString = h + ":" + min + ":" + sec;
 
-    if ( timeFormat == "hh::mm" )
+    if ( timeFormat == "hh:mm" )
         timeString = h + ":" + min;
 
     return timeString;

@@ -2,6 +2,7 @@
 // Created by alessio on 28/08/18.
 //
 
+#include <iostream>
 #include "MyClock.h"
 
 MyClock::MyClock(Counter *counter, QWidget *parent){
@@ -39,10 +40,13 @@ MyClock::MyClock(Counter *counter, QWidget *parent){
 }
 
 void MyClock::update(){
+
     time.setText(QString::fromStdString(myCounter->getStringTime()));
     date.setText(QString::fromStdString(myCounter->getStringDate()));
 
-    QString form;
+   // std::cerr<<myCounter->getStringDate();
+
+    std::string form;
     switch ( selectTimeFormat.currentIndex()) {
         case 0:
             form = "hh::mm::ss";
@@ -70,7 +74,7 @@ void MyClock::update(){
             break;
 
     }
-    myCounter->setDateFormat(form);
+   myCounter->setDateFormat(form);
 
 }
 
@@ -84,7 +88,7 @@ void MyClock::detach(){
 }
 
 void MyClock::changeFormat(){
-    QString form = selectTimeFormat.currentText();
+    std::string form = selectTimeFormat.currentText().toStdString();
     myCounter->setTimeFormat(form);
 
 }

@@ -15,17 +15,18 @@ public:
     void setDate(int d, int m, int y);
     void setDay(int d);
     void setLeapYear(bool leap);
-    void setFormat(QString f);
+    void setFormat(std::string f);
 
     Date &getDate();
     int getDay();
     int getMonth();
     int getYear();
+    std::string &getDateString();
     std::string &getMonthOf();
     std::string &getdayof();
     bool getLeapYear();
 
-    QString &getDateFormat();
+    std::string &getDateFormat();
     bool checkLeapYear(int y);
     void checkMonthOf();
     void checkDayOf();
@@ -35,10 +36,11 @@ private:
     int month;
     int year;
     int dayOf;
-    QString dateFormat;
+    std::string dateFormat;
     bool leapYear;
     std::string monthOf;
     std::string strDayOf;
+    std::string strDate;
 
 };
 

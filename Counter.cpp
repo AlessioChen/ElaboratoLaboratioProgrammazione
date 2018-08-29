@@ -3,6 +3,7 @@
 //
 
 #include "Counter.h"
+#include "iostream"
 
 Counter::Counter(){
     date = Date();
@@ -61,33 +62,19 @@ Counter &Counter::getCounter(){
 
 }
 
-void Counter::setDateFormat(QString &format){
+void Counter::setDateFormat(std::string &format){
     date.setFormat(format);
 
 }
 
-void Counter::setTimeFormat(QString &format){
+void Counter::setTimeFormat(std::string &format){
     time.setTimeFormat(format);
 
 }
 
 std::string &Counter::getStringDate(){
-    std::string day = std::to_string(date.getDay());
-    if ( date.getDay() < 10 )
-        day = '0' + std::to_string(date.getDay());
 
-    std::string month = std::to_string(date.getMonth());
-    if ( date.getMonth() < 10 )
-        month = '0' + std::to_string(date.getMonth());
-
-    if ( date.getDateFormat() == "day-month-year" )
-        strDate = date.getdayof() + " " + date.getMonthOf() + " " + std::to_string(date.getYear());
-    if ( getStringDate() == "dd-mm-yyyy" )
-        strDate = day + "-" + month + "-" + std::to_string(date.getYear());
-    if ( date.getDateFormat() == "mm-dd-yyyy" )
-        strDate = month + "-" + day + "-" + std::to_string(date.getYear());
-
-    return strDate;
+    return date.getDateString();
 }
 
 std::string &Counter::getStringTime(){

@@ -16,7 +16,7 @@ public:
     void setSecond(int second);
     void setMinute(int minute);
     void setHours(int hours);
-    void setTimeFormat(const QString &timeFormat);
+    void setTimeFormat(const std::string &timeFormat);
 
     int getSecond() const;
     int getMinute() const;
@@ -30,7 +30,7 @@ private:
     int second;
     int minute;
     int hour;
-    QString timeFormat;
+    std::string timeFormat;
     std::string timeString;
 
 };
