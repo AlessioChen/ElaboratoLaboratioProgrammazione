@@ -12,7 +12,7 @@ Date::Date(){
     year = c.year();
     dayOf = c.dayOfWeek();
     leapYear = c.isLeapYear(year);
-    dateFormat= "day-month-year";
+    dateFormat = "day-month-year";
     checkDayOf();
     checkMonthOf();
 
@@ -187,19 +187,17 @@ std::string &Date::getDateString(){
     std::string m = std::to_string(month);
     std::string y = std::to_string(year);
 
-
     if ( day < 10 )
-         d = '0' + day;
+        d = '0' + std::to_string(day);
     if ( month < 10 )
-        m = '0' +month;
+        m = '0' + std::to_string(month);
 
     if ( dateFormat == "day-month-year" )
-        strDate = getdayof() + " " + getMonthOf() + " " +  y;
+        strDate = getdayof() + " " + d + " " + getMonthOf() + " " + y;
     if ( dateFormat == "dd-mm-yyyy" )
         strDate = d + "-" + m + "-" + y;
     if ( dateFormat == "mm-dd-yyyy" )
         strDate = m + "-" + d + "-" + y;
-
 
     return strDate;
 }

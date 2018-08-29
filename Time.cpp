@@ -78,13 +78,13 @@ std::string &Time::getTimeString(){
     std::string h = std::to_string(hour);
 
     if ( second < 10 )
-        sec = '0' + second;
+        sec = '0' + std::to_string(second);
 
     if ( minute < 10 )
-        min = '0' + minute;
+        min = '0' + std::to_string(minute);
 
     if ( hour < 10 )
-        h = '0' + hour;
+        h = '0' + std::to_string(hour);
 
     if ( timeFormat == "hh:mm:ss" )
         timeString = h + ":" + min + ":" + sec;
