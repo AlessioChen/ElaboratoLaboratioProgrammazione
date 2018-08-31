@@ -11,13 +11,14 @@
 int main(int argc, char *argv[]){
 
     QApplication app(argc, argv);
-
-
-
+    Counter contatore;
 
     MainWindow *window = new MainWindow;
     window->setGeometry(500, 200, 650, 450);
-    Counter contatore;
+
+    QColor green(0, 170, 0);
+    QColor red(255, 0, 0);
+    QPalette color;
 
 
     //bottone di start
@@ -25,12 +26,17 @@ int main(int argc, char *argv[]){
     start.setGeometry(20, 150, 120, 50);
     QFont font = start.font();
     font.setPointSize(15);
+    color.setColor(QPalette::Active, QPalette::ButtonText, green);
+    start.setPalette(color);
 
     //bottone di stop
     QPushButton stop("stop", window);
     stop.setGeometry(320, 150, 120, 50);
     font = stop.font();
     font.setPointSize(15);
+
+    color.setColor(QPalette::Active, QPalette::ButtonText, red);
+    stop.setPalette(color);
 
     //bottone di reset
     QPushButton reset("reset", window);
@@ -53,8 +59,10 @@ int main(int argc, char *argv[]){
 
     //scritta fine timer
     QLabel timeout("TIME OUT!!", window);
-    timeout.setGeometry(145, 210, 160, 50);
+    timeout.setGeometry(350, 210, 160, 50);
     timeout.setAlignment(Qt::AlignCenter);
+    color.setColor(QPalette::Active, QPalette::WindowText, red);
+    timeout.setPalette(color);
     timeout.setVisible(false);
 
 

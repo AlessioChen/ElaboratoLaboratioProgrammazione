@@ -11,8 +11,6 @@ Time::Time(){
     hour = c.hour();
     minute = c.minute();
     second = c.second();
-    timeFormat = "hh:mm:ss";
-    timeString = getTimeString();
 }
 
 void Time::setTime(int s, int m, int h){
@@ -35,9 +33,9 @@ void Time::setTime(int s, int m, int h){
 
 void Time::setSecond(int s){
     if ( s < 0 || s > 59 )
-        second = s;
-    else
         second = QTime::currentTime().second();
+    else
+        second = s;
 }
 
 void Time::setMinute(int m){

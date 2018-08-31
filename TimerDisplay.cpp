@@ -3,6 +3,7 @@
 //
 
 #include "TimerDisplay.h"
+#include "iostream"
 
 TimerDisplay::TimerDisplay(QTimeEdit *editor, Counter *counter, QWidget *parent) : QLCDNumber(parent){
     setGeometry(20, 240, 420, 140);
@@ -18,26 +19,31 @@ TimerDisplay::TimerDisplay(QTimeEdit *editor, Counter *counter, QWidget *parent)
 }
 
 void TimerDisplay::update(){
+
     if ( active ) {
-        if ( thisTime.getSecond() > 0 )
-            thisTime.setSecond(thisTime.getSecond() - 1);
-        else if ( thisTime.getMinute() > 0 ) {
-            thisTime.setMinute(thisTime.getMinute() - 1);
+        int s = thisTime.getSecond();
+        int m = thisTime.getMinute();
+        int h = thisTime.getHours();
+
+        if ( s > 0 )
+            thisTime.setSecond(s - 1);
+        else if ( m > 0 ) {
+            thisTime.setMinute(m - 1);
             thisTime.setSecond(59);
-        } else if ( thisTime.getHours() > 0 ) {
-            thisTime.setHours(thisTime.getHours() - 1);
+        } else if ( h > 0 ) {
+            thisTime.setHours(h - 1);
             thisTime.setMinute(59);
             thisTime.setSecond(59);
         }
+        //  std::cerr << thisTime.getSecond()<< " "<<thisTime.getMinute()<<" "<<thisTime.getHours()<<std::endl;
 
+        text = QString::fromStdString(thisTime.getTimeString());
+
+        display(text);
+
+        if ( thisTime.getHours() == 0 && thisTime.getMinute() == 0 && thisTime.getSecond() == 0 )
+            timeOut();
     }
-
-    text = QString::fromStdString(thisTime.getTimeString());
-    display(text);
-
-    if ( thisTime.getHours() == 0 && thisTime.getMinute() == 0 && thisTime.getSecond() == 0 )
-        timeOut();
-
 }
 
 void TimerDisplay::attach(){
@@ -55,14 +61,15 @@ Time &TimerDisplay::getTime(){
 }
 
 void TimerDisplay::updateEditor(){
-    QTime time = editor->time();
+    QTime t = editor->time();
     std::string form = "hh:mm:ss";
 
-    thisTime.setHours(time.hour());
-    thisTime.setMinute(time.minute());
-    thisTime.setSecond(time.second());
+    thisTime.setHours(t.hour());
+    thisTime.setMinute(t.minute());
+    thisTime.setSecond(t.second());
 
     thisTime.setTimeFormat(form);
+
     text = QString::fromStdString(thisTime.getTimeString());
     display(text);
 
@@ -81,6 +88,8 @@ void TimerDisplay::timeOut(){
 
 void TimerDisplay::fromStart(){
     if ( !active && !allowTimeOut ) {
+        color.setColor(QPalette::Active, QPalette::WindowText, QColor(0, 0, 0));
+        this->setPalette(color);
         active = true;
         allowTimeOut = true;
         if ( !paused )
@@ -113,7 +122,13 @@ void TimerDisplay::fromReset(){
 }
 
 void TimerDisplay::changeColor(){
+    color.setColor(QPalette::Active, QPalette::WindowText, QColor(255, 0, 0));
+    this->setPalette(color);
 
+}
+
+QTimeEdit *TimerDisplay::getTimeEdit(){
+    return editor;
 }
 
 

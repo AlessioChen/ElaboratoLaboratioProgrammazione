@@ -12,7 +12,6 @@ Date::Date(){
     year = c.year();
     dayOf = c.dayOfWeek();
     leapYear = c.isLeapYear(year);
-    dateFormat = "day-month-year";
     checkDayOf();
     checkMonthOf();
 
