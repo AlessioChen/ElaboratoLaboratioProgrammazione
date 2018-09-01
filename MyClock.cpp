@@ -93,4 +93,12 @@ void MyClock::changeFormat(){
 
 }
 
+QString MyClock::getTimeString(){
+    return time.text();
+}
+
+QString MyClock::getDateString(){
+    return date.text();
+}
+
 

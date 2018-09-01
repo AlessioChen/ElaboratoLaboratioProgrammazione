@@ -25,6 +25,9 @@ public:
 
     Counter *myCounter;
 
+    QString getTimeString();
+    QString getDateString();
+
 private:
     QComboBox selectDateFormat;
     QComboBox selectTimeFormat;
