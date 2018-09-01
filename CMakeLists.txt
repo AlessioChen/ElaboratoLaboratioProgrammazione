@@ -13,6 +13,7 @@ set(SOURCES
         Counter.cpp
         MyClock.cpp
         TimerDisplay.cpp
+
         Observer.h
         Time.h
         Date.h
@@ -21,38 +22,22 @@ set(SOURCES
         TimerDisplay.h
         )
 
-set(TEST_TIME
-        Test/TimeTest.cpp
-        Test/TimeTest.h
-        Test/TimeTest_main.cpp
-        ${SOURCES})
-
-set(TEST_DATE
-        Test/DateTest.cpp
-        Test/DateTest.cpp
-        Test/DateTest_main.cpp
-        ${SOURCES})
-set(TEST_DISPLAY
+set(TEST
+        ${SOURCES}
+        Test/CounterTest.cpp
+        Test/CounterTest.h
+        Test/ClockTest.cpp
+        Test/ClockTest.h
         Test/DisplayTest.h
         Test/DisplayTest.cpp
-        Test/DisplayTest_main.cpp
-        ${SOURCES})
-
-set(TEST_CLOCK
-        ${SOURCES}
-        Test/ClockTest.cpp Test/ClockTest.h Test/ClockTest_main.cpp)
-
-set(TEST_COUNTER
-        ${SOURCES}
-        Test/CounterTest.cpp Test/CounterTest.h
-        Test/CounterTest_main.cpp)
+        Test/DateTest.cpp
+        Test/DateTest.cpp
+        Test/TimeTest.cpp
+        Test/TimeTest.h
+        Test/Test_main.cpp)
 
 add_executable(${PROJECT_NAME} ${SOURCES} main.cpp mainwindow.cpp mainwindow.h mainwindow.ui)
-add_executable(Test_time ${TEST_TIME})
-add_executable(Test_date ${TEST_DATE})
-add_executable(Test_display ${TEST_DISPLAY})
-add_executable(Test_clock ${TEST_CLOCK})
-add_executable(Test_counter ${TEST_COUNTER})
+add_executable(TestClasses ${TEST})
 
 
 set(QT5 NEED)
@@ -67,30 +52,12 @@ target_link_libraries(${PROJECT_NAME} Qt5::Gui)
 target_link_libraries(${PROJECT_NAME} Qt5::Test)
 target_link_libraries(${PROJECT_NAME} Qt5::Widgets)
 
-target_link_libraries(Test_time Qt5::Core)
-target_link_libraries(Test_time Qt5::Widgets)
-target_link_libraries(Test_time Qt5::Test)
+target_link_libraries(TestClasses Qt5::Core)
+target_link_libraries(TestClasses Qt5::Gui)
+target_link_libraries(TestClasses Qt5::Test)
+target_link_libraries(TestClasses Qt5::Widgets)
 
 
-target_link_libraries(Test_date Qt5::Core)
-target_link_libraries(Test_date Qt5::Widgets)
-target_link_libraries(Test_date Qt5::Test)
-
-target_link_libraries(Test_display Qt5::Core)
-target_link_libraries(Test_display Qt5::Test)
-target_link_libraries(Test_display Qt5::Gui)
-target_link_libraries(Test_display Qt5::Widgets)
-
-target_link_libraries(Test_clock Qt5::Core)
-target_link_libraries(Test_clock Qt5::Test)
-target_link_libraries(Test_clock Qt5::Gui)
-target_link_libraries(Test_clock Qt5::Widgets)
-
-
-target_link_libraries(Test_counter Qt5::Core)
-target_link_libraries(Test_counter Qt5::Test)
-target_link_libraries(Test_counter Qt5::Gui)
-target_link_libraries(Test_counter Qt5::Widgets)
 
 
 
