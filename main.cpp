@@ -3,6 +3,7 @@
 #include <QTextEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTimeEdit>
+#include <QtTest/QTest>
 #include "mainwindow.h"
 #include "Counter.h"
 #include "MyClock.h"
