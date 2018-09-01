@@ -14,7 +14,6 @@ set(SOURCES
         Counter.cpp
         MyClock.cpp
         TimerDisplay.cpp
-        main.cpp mainwindow.cpp mainwindow.h mainwindow.ui
         Observer.h
         Time.h
         Date.h
@@ -27,19 +26,24 @@ set(TEST_TIME
         Test/TimeTest.cpp
         Test/TimeTest.h
         Test/TimeTest_main.cpp
-        Time.cpp
-        Time.h)
+        ${SOURCES})
 
 set(TEST_DATE
         Test/DateTest.cpp
         Test/DateTest.cpp
         Test/DateTest_main.cpp
-        Date.h
-        Date.cpp
-        )
-add_executable(${PROJECT_NAME} ${SOURCES})
+        ${SOURCES})
+set(TEST_DISPLAY
+        Test/DisplayTest.h
+        Test/DisplayTest.cpp
+        Test/DisplayTest_main.cpp
+        ${SOURCES})
+
+
+add_executable(${PROJECT_NAME} ${SOURCES} main.cpp mainwindow.cpp mainwindow.h mainwindow.ui)
 add_executable(Test_time ${TEST_TIME})
 add_executable(Test_date ${TEST_DATE})
+add_executable(Test_display ${TEST_DISPLAY})
 
 set(QT5 NEED)
 find_package(Qt5Core REQUIRED)
@@ -50,15 +54,22 @@ find_package(Qt5Test REQUIRED)
 
 target_link_libraries(${PROJECT_NAME} Qt5::Core)
 target_link_libraries(${PROJECT_NAME} Qt5::Gui)
-target_link_libraries(${PROJECT_NAME} Qt5::Widgets)
 target_link_libraries(${PROJECT_NAME} Qt5::Test)
+target_link_libraries(${PROJECT_NAME} Qt5::Widgets)
 
 target_link_libraries(Test_time Qt5::Core)
+target_link_libraries(Test_time Qt5::Widgets)
 target_link_libraries(Test_time Qt5::Test)
 
 
 target_link_libraries(Test_date Qt5::Core)
+target_link_libraries(Test_date Qt5::Widgets)
 target_link_libraries(Test_date Qt5::Test)
+
+target_link_libraries(Test_display Qt5::Core)
+target_link_libraries(Test_display Qt5::Test)
+target_link_libraries(Test_display Qt5::Gui)
+target_link_libraries(Test_display Qt5::Widgets)
 
 
 

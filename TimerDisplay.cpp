@@ -131,4 +131,8 @@ QTimeEdit *TimerDisplay::getTimeEdit(){
     return editor;
 }
 
+bool TimerDisplay::isTimeOut(){
+    return allowTimeOut;
+}
+
 
