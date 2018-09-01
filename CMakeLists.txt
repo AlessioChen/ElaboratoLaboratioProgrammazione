@@ -42,11 +42,18 @@ set(TEST_CLOCK
         ${SOURCES}
         Test/ClockTest.cpp Test/ClockTest.h Test/ClockTest_main.cpp)
 
+set(TEST_COUNTER
+        ${SOURCES}
+        Test/CounterTest.cpp Test/CounterTest.h
+        Test/CounterTest_main.cpp)
+
 add_executable(${PROJECT_NAME} ${SOURCES} main.cpp mainwindow.cpp mainwindow.h mainwindow.ui)
 add_executable(Test_time ${TEST_TIME})
 add_executable(Test_date ${TEST_DATE})
 add_executable(Test_display ${TEST_DISPLAY})
 add_executable(Test_clock ${TEST_CLOCK})
+add_executable(Test_counter ${TEST_COUNTER})
+
 
 set(QT5 NEED)
 find_package(Qt5Core REQUIRED)
@@ -78,6 +85,13 @@ target_link_libraries(Test_clock Qt5::Core)
 target_link_libraries(Test_clock Qt5::Test)
 target_link_libraries(Test_clock Qt5::Gui)
 target_link_libraries(Test_clock Qt5::Widgets)
+
+
+target_link_libraries(Test_counter Qt5::Core)
+target_link_libraries(Test_counter Qt5::Test)
+target_link_libraries(Test_counter Qt5::Gui)
+target_link_libraries(Test_counter Qt5::Widgets)
+
 
 
 
